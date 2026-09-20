@@ -1,0 +1,35 @@
+=================================================================
+  RELATÓRIO DE INSIGHTS — EDA AIOps Locaweb
+=================================================================
+
+VISÃO GERAL
+  Total de incidentes:        122,543
+  Entram para KPI:            25,751 (21.0%)
+  OLA Violado:                248 (1.0% dos KPI)
+  Abertos por Monitoramento:  85.1%
+  Status Sem Intervenção:     65.6%
+  Solução por Contorno:       7.7%
+
+SAZONALIDADE
+  Hora de pico: 9h
+  Dia de pico:  Quarta
+  Recomendação: criar features hora_sin/cos e dia_sem_sin/cos
+
+ICs BARULHENTOS
+  Top 3 ICs automáticos: IC00014, IC00019, IC00008
+  Recomendação: criar feature 'alertas_ic_24h_antes' como preditor de P2 iminente
+
+OLA E KPI
+  OLA medido pela data de ENCERRAMENTO (não abertura)
+  P2: máx 3 violações/mês | P3: meta em definição
+  Incidentes Sem Intervenção e com Incidente Pai NÃO entram para KPI
+
+RECOMENDAÇÕES DE FEATURE ENGINEERING
+  1. Encoding cíclico (sin/cos) para hora, dia, mês
+  2. Frequência de alertas por IC (7d e 30d)
+  3. Janela de 24h antes: alertas automáticos no mesmo IC
+  4. Reincidência: reabertura em 72h após contorno
+  5. Hierarquia Pai-Filho: qtd_filhos e proporcao_filhos_violaram
+  6. Carga de equipe: volume do grupo nos últimos 7 dias
+
+=================================================================

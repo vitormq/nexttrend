@@ -1,0 +1,97 @@
+# docker-compose.yml - AIOps Locaweb
+#
+# Fluxo reprodutível:
+#   1) coloque data/raw/LW-DATASET.xlsx
+#   2) docker compose run --rm pipeline      # gera dados, modelos e relatórios
+#   3) docker compose up api dashboard        # sobe API (8000) + dashboard (8501)
+#   (opcional)  docker compose up mlflow       # UI de experimentos em :5000
+#
+# MLflow usa o file store LOCAL (./mlruns montado em /app/mlruns) - sem servidor
+# obrigatório e sem condição de corrida. O serviço mlflow é só um visualizador.
+
+services:
+
+  # ------------------------------------------------------------- PIPELINE ---
+  # One-shot: etapa2->4->5->7->8 (->6 opcional). Precisa de data/raw/LW-DATASET.xlsx.
+  pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aiops_pipeline
+    command: python scripts/run_pipeline.py
+    environment:
+      - PYTHONIOENCODING=utf-8
+      # sem MLFLOW_TRACKING_URI -> usa o file store local /app/mlruns (robusto)
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./reports:/app/reports
+      - ./mlruns:/app/mlruns
+    networks:
+      - aiops_net
+
+  # ------------------------------------------------------------------ API ---
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aiops_api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./reports:/app/reports
+    networks:
+      - aiops_net
+
+  # --------------------------------------------------------------- DASHBOARD ---
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aiops_dashboard
+    restart: unless-stopped
+    command: >
+      streamlit run etapa10_dashboard.py
+        --server.port=8501
+        --server.address=0.0.0.0
+        --server.headless=true
+    ports:
+      - "8501:8501"
+    environment:
+      - API_BASE_URL=http://api:8000
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./reports:/app/reports
+    depends_on:
+      - api
+    networks:
+      - aiops_net
+
+  # ----------------------------------------------------- MLFLOW (opcional) ---
+  # Visualizador dos experimentos gravados pelo pipeline no file store /app/mlruns.
+  # Nada depende dele - o pipeline funciona sem o servidor.
+  mlflow:
+    image: python:3.11-slim
+    container_name: aiops_mlflow
+    restart: unless-stopped
+    command: >
+      bash -c "pip install mlflow==2.13.0 --quiet &&
+               mlflow server
+                 --backend-store-uri file:///app/mlruns
+                 --default-artifact-root file:///app/mlruns
+                 --host 0.0.0.0
+                 --port 5000"
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/app/mlruns
+    networks:
+      - aiops_net
+
+networks:
+  aiops_net:
+    driver: bridge

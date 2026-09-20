@@ -1,0 +1,25 @@
+{
+  "n_nan_numericos": 0,
+  "resultados": {
+    "Baseline (atual)": {
+      "auc": 0.795,
+      "std": 0.0163
+    },
+    "Normalizacao (StandardScaler)": {
+      "auc": 0.795,
+      "std": 0.0163
+    },
+    "Capping de outliers [1%,99%]": {
+      "auc": 0.7969,
+      "std": 0.0088
+    },
+    "Log nas numericas": {
+      "auc": 0.795,
+      "std": 0.0163
+    },
+    "Capping + Normalizacao": {
+      "auc": 0.7969,
+      "std": 0.0088
+    }
+  }
+}

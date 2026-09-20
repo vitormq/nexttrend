@@ -1,0 +1,20 @@
+{
+  "2 - Alta": {
+    "mae_in_sample": 4.14,
+    "mae_out_of_sample": 4.89,
+    "mae_D1": 3.28,
+    "mae_D7": 3.85,
+    "mape_out_of_sample_pct": 39.7,
+    "volume_medio_dia": 14.0,
+    "n_janelas": 4
+  },
+  "3 - Média": {
+    "mae_in_sample": 4.15,
+    "mae_out_of_sample": 9.18,
+    "mae_D1": 7.79,
+    "mae_D7": 12.02,
+    "mape_out_of_sample_pct": 51.7,
+    "volume_medio_dia": 25.4,
+    "n_janelas": 40
+  }
+}

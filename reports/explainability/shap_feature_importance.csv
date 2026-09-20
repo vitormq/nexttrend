@@ -1,0 +1,43 @@
+feature,shap_medio
+cat__Grupo designado,0.17989355
+num__grupo_taxa_violacao_30d,0.15288746
+cat__Item de configuração,0.07951782
+num__grupo_vol_30d,0.07693996
+num__vol_dia_ate_agora,0.06057344
+num__carga_grupo_atrasados,0.045803163
+num__grupo_media_duracao_30d,0.03192637
+num__ic_vol_7d,0.03159578
+cat__Aberto por,0.023500277
+num__carga_ic_abertos,0.021637945
+num__hora_x_prioridade,0.020906737
+num__carga_grupo_abertos,0.020774938
+num__ic_taxa_violacao_30d,0.018033313
+num__grupo_vol_7d,0.016098658
+num__ic_vol_30d,0.015272553
+num__desc_n_chars,0.01508634
+num__hora_abertura,0.0104700625
+num__dia_semana,0.010166786
+num__ic_barulhento_medio_dia,0.010141247
+num__desc_n_palavras,0.009409377
+num__ic_taxa_violacao_7d,0.008799123
+num__alta_x_barulhento,0.0085812
+num__is_horario_comercial,0.008500757
+num__dia_mes,0.007439969
+num__ic_media_duracao_30d,0.0067405584
+num__alta_x_carga_grupo,0.0050870576
+num__prioridade_num,0.0050822026
+num__is_weekend,0.004280421
+num__desc_tem_erro,0.003854578
+num__trimestre,0.0035835342
+num__mes,0.0013232109
+num__desc_tem_fora,0.0004419099
+num__is_madrugada,0.00039544047
+num__violacoes_dia_ate_agora,0.0
+cat__Prioridade,0.0
+num__taxa_violacao_dia_ate_agora,0.0
+num__grupo_taxa_violacao_7d,0.0
+num__is_fim_de_mes,0.0
+num__desc_tem_critico,0.0
+num__desc_tem_lento,0.0
+num__ola_limite_horas,0.0
+num__desc_tem_cliente,0.0

@@ -1,0 +1,31 @@
+# Ambiente virtual (binários Windows — não vão para a imagem Linux)
+venv/
+.venv/
+env/
+
+# Caches Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Artefatos gerados (montados como volumes em runtime; não bakear na imagem)
+mlruns/
+data/processed/
+data/splits/
+models/saved/
+reports/
+
+# Git e IDE
+.git/
+.gitignore
+.idea/
+.vscode/
+*.ipynb_checkpoints/
+
+# SO
+.DS_Store
+Thumbs.db

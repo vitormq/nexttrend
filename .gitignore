@@ -1,0 +1,24 @@
+# ambientes virtuais e caches do Python
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# rastreamento de experimentos (gerado localmente, pode ficar grande)
+mlruns/
+
+# logs e temporários
+*.log
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# segredos e configuração local (NÃO versionar)
+.env
+.streamlit/secrets.toml
+
+# temporários do sistema operacional
+.DS_Store
+Thumbs.db

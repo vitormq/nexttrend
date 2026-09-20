@@ -1,0 +1,5 @@
+# Relatorios e graficos gerados (HTML do Plotly, imagens, dados) nao sao
+# codigo-fonte. Marca como "generated" para o GitHub classificar o
+# repositorio pela linguagem real (Python) e nao pelo HTML dos relatorios.
+reports/** linguist-generated
+data/** linguist-generated

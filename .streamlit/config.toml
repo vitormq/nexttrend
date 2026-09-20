@@ -1,0 +1,11 @@
+# Tema NextTrend - dark enterprise
+[theme]
+base = "dark"
+primaryColor = "#ff6a3d"
+backgroundColor = "#0a0e14"
+secondaryBackgroundColor = "#141c28"
+textColor = "#e8edf4"
+font = "sans serif"
+
+[client]
+toolbarMode = "minimal"
